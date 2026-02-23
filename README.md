@@ -73,10 +73,8 @@ This runs the React app in standalone mode with file upload support and demo dat
 │   ├── content.js      # Runs on instagram.com, fetches data
 │   ├── dashboard/      # Built React dashboard (auto-generated)
 │   └── icons/          # Extension icons
-├── react-app/          # React source for the dashboard
-│   └── src/App.jsx     # Main dashboard component
-├── frontend/           # Standalone vanilla JS version
-└── backend/            # Express server (optional OAuth skeleton)
+└── react-app/          # React source for the dashboard
+    └── src/App.jsx     # Main dashboard component
 ```
 
 ## How it works
