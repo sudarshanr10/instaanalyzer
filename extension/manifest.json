@@ -3,7 +3,7 @@
   "name": "InstaAnalyzer",
   "version": "1.0.0",
   "description": "Analyze your Instagram followers and find who doesn't follow you back - with a beautiful dashboard",
-  "permissions": ["storage", "activeTab", "tabs"],
+  "permissions": ["storage", "activeTab", "tabs", "scripting"],
   "host_permissions": ["https://www.instagram.com/*"],
   "icons": {
     "16": "icons/icon16.png",

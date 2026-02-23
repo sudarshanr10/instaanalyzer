@@ -29,7 +29,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     dashboardBtn.style.display = 'none';
 
     try {
-      const response = await chrome.tabs.sendMessage(tab.id, { action: 'fetchData' });
+      let response;
+      try {
+        response = await chrome.tabs.sendMessage(tab.id, { action: 'fetchData' });
+      } catch (e) {
+        // Content script not injected yet (tab was open before extension loaded)
+        // Inject it now and retry
+        await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });
+        response = await chrome.tabs.sendMessage(tab.id, { action: 'fetchData' });
+      }
 
       if (response.error) throw new Error(response.error);
 
