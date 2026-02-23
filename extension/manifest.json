@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "InstaAnalyzer",
+  "version": "1.0.0",
+  "description": "Analyze your Instagram followers and find who doesn't follow you back - with a beautiful dashboard",
+  "permissions": ["storage", "activeTab", "tabs"],
+  "host_permissions": ["https://www.instagram.com/*"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["dashboard/*", "dashboard/assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
