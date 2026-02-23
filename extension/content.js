@@ -112,7 +112,7 @@ async function fetchAllFollowers(userId) {
 
     const total = edgeData.count || followers.length;
     sendProgress(Math.min(45, Math.round((followers.length / total) * 45)), `Fetching followers... ${followers.length}/${total}`);
-    await sleep(300);
+    await sleep(150);
   }
 
   return followers;
@@ -154,7 +154,7 @@ async function fetchAllFollowing(userId) {
 
     const total = edgeData.count || following.length;
     sendProgress(50 + Math.min(45, Math.round((following.length / total) * 45)), `Fetching following... ${following.length}/${total}`);
-    await sleep(300);
+    await sleep(150);
   }
 
   return following;

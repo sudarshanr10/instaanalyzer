@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
       dashboardBtn.style.display = 'flex';
 
-      setTimeout(openDashboard, 1500);
+      setTimeout(openDashboard, 300);
 
     } catch (error) {
       status.textContent = error.message || 'Error fetching data. Make sure you\'re logged in.';

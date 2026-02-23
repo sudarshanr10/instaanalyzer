@@ -37,18 +37,17 @@ function App() {
   const [data, setData] = useState(null)
   const [activeTab, setActiveTab] = useState('dontFollowBack')
   const [searchTerm, setSearchTerm] = useState('')
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [showUpload, setShowUpload] = useState(false)
   const [dragActive, setDragActive] = useState(false)
   const [fetchedAt, setFetchedAt] = useState(null)
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
     loadFromStorage()
   }, [])
 
   const loadFromStorage = async () => {
-    setIsLoading(true)
-
     if (isExtension) {
       try {
         const stored = await chrome.storage.local.get(['instagramData', 'fetchedAt'])
@@ -68,7 +67,7 @@ function App() {
       setShowUpload(true)
     }
 
-    setIsLoading(false)
+    setReady(true)
   }
 
   const analyzeData = (rawData) => {
@@ -201,33 +200,7 @@ function App() {
     })
   }
 
-  if (isLoading && !data && !showUpload) {
-    return (
-      <div className="app">
-        <div className="bg-effects">
-          <div className="gradient-sphere sphere-1" />
-          <div className="gradient-sphere sphere-2" />
-          <div className="gradient-sphere sphere-3" />
-          <div className="grid-overlay" />
-          <div className="noise" />
-        </div>
-        <div className="initial-loading">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="loading-content"
-          >
-            <div className="loader">
-              <div className="loader-ring" />
-              <div className="loader-ring" />
-              <div className="loader-ring" />
-            </div>
-            <h2>Loading your data...</h2>
-          </motion.div>
-        </div>
-      </div>
-    )
-  }
+  if (!ready) return null
 
   return (
     <div className="app">
