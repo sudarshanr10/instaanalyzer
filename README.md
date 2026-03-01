@@ -88,7 +88,3 @@ No data ever leaves your browser.
 - No accounts, no sign-up, no backend
 - Data is stored only in Chrome's local extension storage
 - Clicking "Refresh" clears all stored data
-
-## License
-
-MIT
